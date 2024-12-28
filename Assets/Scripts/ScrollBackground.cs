@@ -17,6 +17,6 @@ public class ScrollBackground : MonoBehaviour
 
     void Update()
     {
-        mr.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0);
+        mr.material.mainTextureOffset += new Vector2(GameManager.instance.CalculateSpeed(speed) * Time.deltaTime, 0);
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    public float jumpForce;
+    public float jumpForce = 15;
     Rigidbody2D rb;
 
     public bool isGrounded;
     Animator anim;
     BoxCollider2D BoxCollider2D;
-    int lives = 3;
+    //int lives = 3;
     bool isUntouchable;
     void Start()
     {
@@ -32,7 +32,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void KillPlayer()
+    public void KillPlayer()
     {
         BoxCollider2D.enabled = false;
         anim.enabled = false;
@@ -76,16 +76,12 @@ public class PlayerJump : MonoBehaviour
 
     void Hit()
     {
-        lives--;
-        if (lives == 0)
-        {
-            KillPlayer();
-        }
+        GameManager.instance.lives--;
     }
 
     void Heal()
     {
-        lives = Mathf.Min(3, lives + 1);
+        GameManager.instance.lives = Mathf.Min(3, GameManager.instance.lives + 1);
     }
 
     void Untouchable()

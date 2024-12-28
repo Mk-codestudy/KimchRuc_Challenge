@@ -11,6 +11,6 @@ public class Mover : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.position += Vector3.left * GameManager.instance.CalculateSpeed(moveSpeed) * Time.deltaTime;
     }
 }

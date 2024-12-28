@@ -8,9 +8,14 @@ public class Spawner : MonoBehaviour
     [Header("건물오브제")]
     public GameObject[] gams;
 
-    void Start()
+    void OnEnable()
     {
         Invoke("Spawn", Random.Range(minSpawnDelay, maxSpawnDelay));
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
 
     void Spawn()
