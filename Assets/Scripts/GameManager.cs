@@ -92,14 +92,18 @@ public class GameManager : MonoBehaviour
             scoreText.text = "HighScore " + GetHighScore();
         }
 
-        if (state == Gamestate.Intro && Input.GetKeyDown(KeyCode.Space))
+        if (state == Gamestate.Intro)
         {
-            state = Gamestate.Playing;
-            introUI.SetActive(false);
-            EnemySpawner.SetActive(true);
-            FoodSpawner.SetActive(true);
-            GoldenSpawner.SetActive(true);
-            gamestartTime = Time.time;
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            {
+                state = Gamestate.Playing;
+                SoundManager.instance.StartSound();
+                introUI.SetActive(false);
+                EnemySpawner.SetActive(true);
+                FoodSpawner.SetActive(true);
+                GoldenSpawner.SetActive(true);
+                gamestartTime = Time.time;
+            }
         }
         else if (state == Gamestate.Playing && lives == 0)
         {
@@ -111,8 +115,9 @@ public class GameManager : MonoBehaviour
             deadUI.SetActive(true);
             SaveHighScore();
         }
-        else if (state == Gamestate.Dead && Input.GetKeyDown(KeyCode.Space))
+        else if (state == Gamestate.Dead) 
         {
+            if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             SceneManager.LoadScene("Main");
         }
     }

@@ -4,10 +4,6 @@ public class Mover : MonoBehaviour
 {
     public float moveSpeed;
 
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
